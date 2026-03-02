@@ -1,0 +1,10 @@
+# Render 部署配置文件
+# 访问 https://render.com 注册并部署
+
+buildCommand: pip install -r requirements.txt
+startCommand: gunicorn app:app
+
+# 环境变量（可选）
+envVars:
+  - key: PYTHON_VERSION
+    value: 3.9.0

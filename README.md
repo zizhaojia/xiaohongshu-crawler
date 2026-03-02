@@ -265,11 +265,64 @@ response = requests.get(url, proxies=proxies)
 
 ## 📜 更新日志
 
+### v1.1.0 (2026-03-02)
+- 添加 Web 管理界面
+- 支持一键部署到 Render
+- 支持在线搜索和数据导出
+
 ### v1.0.0 (2026-03-02)
 - 基础爬虫功能
 - 支持关键词搜索
 - 支持笔记详情获取
 - 支持用户信息获取
+
+## 🌐 Web 界面部署
+
+本项目支持部署为 Web 服务，提供可视化管理界面。
+
+### 方式 1：Render（推荐）
+
+Render 提供免费的 Python Web 托管：
+
+1. **注册账号**
+   - 访问 https://render.com
+   - 使用 GitHub 账号登录
+
+2. **新建 Web Service**
+   - 点击 "New" → "Web Service"
+   - 选择你的 GitHub 仓库 `xiaohongshu-crawler`
+   - 填写配置：
+     - **Name**: xiaohongshu-crawler
+     - **Environment**: Python 3
+     - **Build Command**: `pip install -r requirements.txt`
+     - **Start Command**: `gunicorn app:app`
+
+3. **部署**
+   - 点击 "Create Web Service"
+   - 等待部署完成（约 2-5 分钟）
+   - 访问分配的 URL 即可使用
+
+### 方式 2：本地运行 Web 界面
+
+```bash
+pip install -r requirements.txt
+python app.py
+```
+
+然后访问 http://localhost:5000
+
+### Web 界面功能
+
+- 🔍 **关键词搜索**：输入关键词爬取笔记
+- 📊 **数据统计**：查看爬取结果统计
+- 📥 **数据导出**：支持 JSON 和 Excel 格式
+- 🍪 **Cookie 支持**：填入 Cookie 获取完整数据
+
+### 注意事项
+
+- Render 免费版有 15 分钟无访问自动休眠限制
+- 首次访问可能需要等待唤醒（约 30 秒）
+- 建议仅用于个人学习和测试
 
 ## 📞 联系
 
